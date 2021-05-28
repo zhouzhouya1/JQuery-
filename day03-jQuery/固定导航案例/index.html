@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0
+    }
+    
+    img {
+      vertical-align: top;
+    }
+    
+    .main {
+      margin: 0 auto;
+      width: 1000px;
+      padding-top: 10px;
+    }
+    
+    .fixed {
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+  </style>
+  
+</head>
+<body>
+<div class="top" id="topPart">
+  <img src="images/top.png" alt=""/>
+</div>
+<div class="nav" id="navBar">
+  <img src="images/nav.png" alt=""/>
+</div>
+<div class="main" id="mainPart">
+  <img src="images/main.png" alt=""/>
+</div>
+<script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      // 思路: 1. 当页面卷去的高度 达到 topPart的高度时, 将 nav 加上 fixed 类
+      //       2. 卷去高度 小于 topPart 高度时, nav 移除 fixed 类
+    //  事件监听
+    $(window).scroll(function(){
+      // 获取滚动条的距离和topPart的高度
+       var winToScroll=$(window).scrollTop();
+       var topPartHeight=$("#topPart").height();
+      //  console.log(winToScroll,topPartHeight)
+      //  判断是否达到这个高度
+      if(winToScroll>=topPartHeight){
+        // 让导航固定死flex
+        $("#navBar").addClass("fixed");
+        console.log($("#navBar").height())
+        $("#mainPart").css({
+          marginTop:$("#navBar").height()
+        })
+      }else{
+        $("#navBar").removeClass("fixed");
+        $("#mainPart").css({
+          marginTop:0
+        })
+      }
+    })
+    });
+  </script>
+
+</body>
+</html>

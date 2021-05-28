@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        * {
+          padding: 0;
+          margin: 0;
+        }
+  
+        ul {
+          list-style-type: none;
+        }
+  
+        .parentWrap {
+          width: 200px;
+          text-align: center;
+        }
+  
+        .menuGroup {
+          border: 1px solid #999;
+          background-color: #e0ecff;
+        }
+  
+        .groupTitle {
+          display: block;
+          height: 20px;
+          line-height: 20px;
+          font-size: 16px;
+          border-bottom: 1px solid #ccc;
+          cursor: pointer;
+        }
+  
+        .menuGroup > div {
+          height: 200px;
+          background-color: #fff;
+          display: none;
+        }
+      </style>
+</head>
+<body>
+    <ul class="parentWrap">
+        <li class="menuGroup">
+          <span class="groupTitle">标题1</span>
+          <div>我是弹出来的div1</div>
+        </li>
+        <li class="menuGroup">
+          <span class="groupTitle">标题2</span>
+          <div>我是弹出来的div2</div>
+        </li>
+        <li class="menuGroup">
+          <span class="groupTitle">标题3</span>
+          <div>我是弹出来的div3</div>
+        </li>
+        <li class="menuGroup">
+          <span class="groupTitle">标题4</span>
+          <div>我是弹出来的div4</div>
+        </li>
+      </ul>
+      <script src="jquery-1.12.4.js"></script>
+      <script>
+        //   需求：点击标题展开显示内容，点击其他的则这个内容展示，其他的会隐藏，
+        // $("span").click(function(){
+        //     // 给span绑定事件，让自己下一个兄弟展示，其他父元素下的div隐藏
+        //     $(this).next().show().parent().siblings().find("div").hide()
+        // })
+        // 优化，再一次点击自己的时候隐藏,还是有bug,展开之后再点击其他的打不开，要点击二次才可
+        let flag=true;
+        $("span").click(function(){
+            // 如果点击过一次
+            if(flag){
+                $(this).next().show().parent().siblings().find("div").hide()
+            }else{
+                $(this).next().hide()
+            }
+            flag=!flag;
+
+        })
+      </script>
+</body>
+</html>

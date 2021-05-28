@@ -1,0 +1,8 @@
+#忽略所有的.idea文件夹
+.idea
+#忽略node_modules文件和文件夹
+/node_modules
+#忽略所有以.md结尾的文件
+*.md
+#忽略所有的.xmind文件夹
+.xmind

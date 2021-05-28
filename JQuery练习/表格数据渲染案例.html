@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body><!DOCTYPE html>
+    <html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            // 模拟从后台拿到数据
+            var datas = [{
+                    name: '海静',
+                    url: 'http://www.atguigu.com',
+                    type: '光头lsp',
+                },
+                {
+                    name: '沛华',
+                    url: 'http://www.atguigu.com.com',
+                    type: '渣男锡纸烫',
+                },
+                {
+                    name: '彤彤',
+                    url: 'http://web.atguigu.cn',
+                    type: '嘿嘿嘿',
+                },
+            ];
+            // 需求，点击按钮，出现tbody的数据
+            // 显示获取该事件，注册事件，有多少个数据就生成多少个tr在每一个数据对象有多少键值对就生成多少个td
+           $("#j_btnGetData").click(function(){
+               let str="";
+            //    对数据遍历有多少个数据就会生成多个tr
+            datas.forEach(function(item){
+                str+=` <tr>
+                            <td>${item.name}</td>
+                            <td>${item.url}</td>
+                            <td>${item.type}</td>
+                        </tr> `;
+            })
+            $("#j_tbData").html(str)
+            console.log(1);
+            
+           })
+        })
+    </script>
+    
+    <body>
+        <input type="button" value="获取数据" id="j_btnGetData">
+        <table>
+            <thead>
+                <tr>
+                    <th>标题</th>
+                    <th>地址</th>
+                    <th>说明</th>
+                </tr>
+            </thead>
+            <tbody id="j_tbData">
+                <!-- <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr> -->
+            </tbody>
+    
+        </table>
+    </body>
+    
+    </html>
+    
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <div id="box">
+        <h3>hhhhh</h3>
+    </div>
+    <div id="box1">
+        <h3>hhhhh</h3>
+    </div> -->
+    <div>
+        <p>1</p>
+        <span>2</span>
+    </div>
+    <p id="clone">
+        <span>克隆下的内容</span>
+    </p>
+    <script src="jquery-1.12.4.js"></script>
+
+    <script>
+        /* 
+         1.append(jquery对象/"html字符串"/Dom对象)有剪切效果
+         html("html字符串")会覆盖以前的内容
+
+         */
+
+        // 添加
+        // jQuery对象append(jquery对象/dom对象/html格式的字符串)
+        // $("div").append("<h1>hello world!</h1>")
+        // $("#box h3").append("<h3>hello world!</h3>")
+        
+        // 如果插入已有的元素有剪切效果
+        let $p=$("p");
+        $("div").append($p);
+        // 传入一个html形式的字符串,会有覆盖效果，相当以前的innerHtml
+        // $("div").html("<span>2</span>");
+        // 传入一个dom对象,也会有剪切效果
+        let  span=document.getElementsByTagName("span")
+        $("div").append(span)
+
+
+        // html()不传参数，用于获取内容
+        console.log($("div").html())
+        // html("")传入一个空的字符串，会清空dom、元素，不推荐使用，因为子元素的事件没有备清除，会造成内纯泄露
+        // 清空元素 empty()清空指定的所有的子节点，（推荐使用，会清除子元素上绑定的内容）
+        // 删除元素：把自己删除掉 jQuery.remove()
+        // 克隆元素：clone([boolean])
+        // 不传入参数相当于false则会复制所有的dom元素，如果传入参数true，会把他的jquery方法也会克隆下来，js原生的方法克隆不下来
+        $("div").clone($("#clone"))
+
+
+
+    </script>
+</body>
+</html>

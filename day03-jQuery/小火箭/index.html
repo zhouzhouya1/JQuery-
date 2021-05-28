@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    body {
+      height: 8000px;
+    }
+    
+    a {
+      color: #FFF;
+    }
+    
+    .actGotop {
+      position: fixed;
+      bottom: 50px;
+      right: 50px;
+      width: 150px;
+      height: 195px;
+      display: none;
+      z-index: 100;
+    }
+    
+    .actGotop a, .actGotop a:link {
+      width: 150px;
+      height: 195px;
+      display: inline-block;
+      background: url(images/gotop.png) no-repeat;
+      outline: none;
+    }
+    
+    .actGotop a:hover {
+      width: 150px;
+      height: 195px;
+      background: url(images/gotop.gif) no-repeat;
+      outline: none;
+    }
+  </style>
+
+</head>
+<body>
+
+
+
+<!-- 返回顶部小火箭 -->
+<div class="actGotop"><a href="javascript:;" title="Top"></a></div>
+
+<script src="jquery-1.12.4.js"></script>
+<script>
+  $(function () {
+    // 小火箭
+    // 1. 滚动到一定位置, 小火箭 慢慢的显示 (fadeIn), 没到 fadeOut
+    // js原生事件是window.scroll事件
+    // 需求：监听浏览器事件，当滚动到1000的时候出现小火煎，动画出现，点击之后动画回到顶部
+    $(window).scroll(function(){
+      // 
+      var $scrollTop=$(window).scrollTop();
+      if($scrollTop>=1000){
+        $(".actGotop").stop(true).fadeIn();
+      }else{
+        $(".actGotop").stop(true).fadeOut();
+      }
+    });
+    // 点击小火煎动画回到顶部
+    $(".actGotop").click(function(){
+      // 文档回到顶部，是系统滚动条回到顶部，有时候系统滚动条在html,或hi是body兼容性问题
+      $("html,body").stop(true).animate({
+        scrollTop:0
+      })
+    })
+  });
+</script>
+
+</body>
+</html>

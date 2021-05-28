@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 快捷方式：ul#ul>li{我是li元素$}*8 -->
+    <ul id="ul">
+        <li>我是li元素1</li>
+        <li>我是li元素2</li>
+        <li>我是li元素3</li>
+        <li>我是li元素4</li>
+        <li>我是li元素5</li>
+        <li>我是li元素6</li>
+        <li>我是li元素7</li>
+        <li>我是li元素8</li>
+    </ul>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        /* 需求：点击哪一行哪一行就高亮
+                1：获取所有的元素 
+                2.给所有的li绑定点击事件
+                3.点击哪一行这一行不高亮，他的其他兄弟元素都不亮
+        */
+    // 1：获取所有的元素 
+    // let oLis=document.getElementsByTagName("li");
+    // console.log(oLis)//的到是一个集合不可以用数组的方法遍历可以用for  
+    // for(let  i=0; i< oLis.length;i++){
+    //     // 第一次遍历是给所有的li绑定鼠标移入事件
+    //     oLis[i].onmouseenter=function(){
+    //         // 第二次遍历取消所有的背景颜色
+    //         for(var i=0; i< oLis.length;i++){
+    //             oLis[i].style.backgroundColor="";
+    //         }
+    //         this.style.backgroundColor="pink"
+    //     }
+    // }
+    // jquery方法
+    //  $("#ul>li")会隐士迭代，迭代的意思会循环
+        $("#ul>li").mouseenter(function(){
+            // this得到的是dom元素，需要把dom元素变成jquer对象才能使用jquery方法
+            $(this).css({backgroundColor:"pink"}).siblings().css("backgroundColor","")
+        })
+    </script>
+</body>
+</html>
